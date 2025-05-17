@@ -4,11 +4,14 @@ const ACCESS_KEY = 'tdp8QNJMx6ehdAgjITh35DWpqjtDdm5zaqxoEfaN2Bs';
 
 export interface UnsplashImage {
   id: string;
-  alt_description: string;
-  urls: {
-    small: string;
-    regular: string;
-  };
+  alt_description: string | null;
+
+urls: {
+  small: string;
+  regular: string;
+  full: string; 
+}
+
 }
 
 export interface UnsplashResponse {

@@ -1,19 +1,10 @@
-// src/components/ImageCard/ImageCard.tsx
 import React from 'react';
 import styles from './ImageCard.module.css';
-
-interface Image {
-  id: string;
-  urls: {
-    small: string;
-    // інші розміри, якщо потрібно
-  };
-  alt_description: string | null;
-}
+import { UnsplashImage } from '../../api/unsplash'; // ✅ Імпорт
 
 interface ImageCardProps {
-  image: Image;
-  onClick: (image: Image) => void;
+  image: UnsplashImage; // ✅ Використовуємо той самий тип
+  onClick: (image: UnsplashImage) => void;
 }
 
 const ImageCard: React.FC<ImageCardProps> = ({ image, onClick }) => {

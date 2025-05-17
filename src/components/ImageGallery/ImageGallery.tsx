@@ -1,20 +1,11 @@
-// src/components/ImageGallery/ImageGallery.tsx
 import React from 'react';
 import ImageCard from '../ImageCard/ImageCard';
 import styles from './ImageGallery.module.css';
-
-interface Image {
-  id: string;
-  urls: {
-    small: string;
-    // інші розміри, якщо потрібно
-  };
-  alt_description: string | null;
-}
+import { UnsplashImage } from '../../api/unsplash';
 
 interface ImageGalleryProps {
-  images: Image[];
-  onImageClick: (image: Image) => void;
+  images: UnsplashImage[];
+  onImageClick: (image: UnsplashImage) => void;
 }
 
 const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onImageClick }) => {
