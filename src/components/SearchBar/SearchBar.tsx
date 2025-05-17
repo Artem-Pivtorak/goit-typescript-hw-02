@@ -1,16 +1,25 @@
-import { useState } from 'react';
+// src/components/SearchBar/SearchBar.tsx
+import React, { FormEvent, ChangeEvent, useState } from 'react';
 import styles from './SearchBar.module.css';
 
-const SearchBar = ({ onSubmit }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+interface SearchBarProps {
+  onSubmit: (query: string) => void;
+}
 
-  const handleChange = e => {
-    setSearchTerm(e.target.value);
+const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
+  const [searchTerm, setSearchTerm] = useState<string>('');
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.currentTarget.value);
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onSubmit(searchTerm.trim());
+    const trimmed = searchTerm.trim();
+    if (trimmed) {
+      onSubmit(trimmed);
+      setSearchTerm(''); // за бажанням очищати поле
+    }
   };
 
   return (
